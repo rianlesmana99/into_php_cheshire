@@ -18,4 +18,40 @@ function view_data_user() {
     return $result;
 }
 
+function add_data_user($username, $password) {
+    global $conn;
+    $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        header("Location: ../index.php?message=Berhasil+menambahkan+data");
+    }
+}
+
+function delete_data_user($id) {
+    global $conn;
+    $sql = "DELETE FROM users WHERE id=$id";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        header("Location: ./index.php?message=Berhasil+menghapus+data");
+    }
+}
+
+function get_user_data($id) {
+    global $conn;
+    $sql = "SELECT * FROM users WHERE id=$id";
+    $result = mysqli_query($conn, $sql);
+    return $result;
+}
+
+function edit_data_user($id, $username, $password) {
+    global $conn;
+    $sql = "UPDATE users SET username='$username', password='$password' WHERE id=$id";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        header("Location: ../index.php?message=Berhasil+memperbarui+data");
+    }
+}
 
