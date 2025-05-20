@@ -1,5 +1,6 @@
 <?php
 require "./db.php";
+require "./auth.php"; // ini yang jadi midleware
 
 $result_data = view_data_user();
 $num = 1;

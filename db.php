@@ -55,3 +55,9 @@ function edit_data_user($id, $username, $password) {
     }
 }
 
+function get_user_by_username($username) {
+    global $conn;
+    $sql = "SELECT * FROM users WHERE username='$username'";
+    $result = mysqli_query($conn, $sql);
+    return $result;
+}
