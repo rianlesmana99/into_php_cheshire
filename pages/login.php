@@ -1,14 +1,13 @@
 <?php
 require "../db.php";
 
-
 if (isset($_POST["submit"])) {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+    $username = htmlspecialchars($_POST["username"]);
+    $password = htmlspecialchars($_POST["password"]);
     $result = get_user_by_username($username)->fetch_assoc();
     
     if ($result != null) {
-        if (($result["username"] === $username) && ($result["password"] === $password)) {
+        if (($result["username"] === $username) && password_verify($password, $result["password"])) {
             session_start();
             $_SESSION["user_id"] = $result["id"];
             header("Location: ../index.php?message=login+berhasil");

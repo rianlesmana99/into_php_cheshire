@@ -11,6 +11,7 @@ if (isset($_GET["delete"])) {
   delete_data_user($id);
 }
 
+// Logic untuk logout
 if (isset($_GET["logout"])) {
     session_destroy();
     header("Location: ./pages/login.php?message=anda+harus+login");

@@ -20,7 +20,8 @@ function view_data_user() {
 
 function add_data_user($username, $password) {
     global $conn;
-    $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
+    $encrypt = password_hash($password, PASSWORD_BCRYPT);
+    $sql = "INSERT INTO users (username, password) VALUES ('$username', '$encrypt')";
     $result = mysqli_query($conn, $sql);
 
     if ($result) {

@@ -2,15 +2,15 @@
 require "../db.php";
 
 if (isset($_GET["id"])) {
-    $id = $_GET["id"];
+    $id = htmlspecialchars($_GET["id"]);
     $data= get_user_data($id);
     $final_data = $data->fetch_assoc();
 }
 
 if (isset($_POST["submit"])) {
-    $id = $_GET["id"];
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+    $id = htmlspecialchars($_GET["id"]);
+    $username = htmlspecialchars($_POST["username"]);
+    $password = htmlspecialchars($_POST["password"]);
     edit_data_user($id, $username, $password);
 }
 

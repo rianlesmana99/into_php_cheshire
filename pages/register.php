@@ -2,8 +2,8 @@
 require "../db.php";
 
 if (isset($_POST["submit"])) {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+    $username = htmlspecialchars($_POST["username"]);
+    $password = htmlspecialchars($_POST["password"]);
     add_data_user($username, $password);
 }
 
