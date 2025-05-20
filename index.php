@@ -10,6 +10,12 @@ if (isset($_GET["delete"])) {
 
   delete_data_user($id);
 }
+
+if (isset($_GET["logout"])) {
+    session_destroy();
+    header("Location: ./pages/login.php?message=anda+harus+login");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +34,7 @@ if (isset($_GET["delete"])) {
     <div class="card p-2 shadow-sm" style="width: 800px">
       <h1 class="text-center" style="font-size: 30px;">List User</h1>
       <a class="btn btn-success w-25 mb-2" href="./pages/register.php">Sign Up</a>
+      <a class="btn btn-danger w-25 mb-2" href="./index.php?logout=1">Logout</a>
       <table class="table table-info table-striped-columns">
         <tr class="text-center">
           <th style="width: 30px;">No.</th>
