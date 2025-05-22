@@ -74,3 +74,10 @@ function forgot_password($username, $new_password) {
     $result = mysqli_query($conn, $sql);
     return $result;
 }
+
+function get_profile_data($user_id) {
+    global $conn;
+    $sql = "SELECT * FROM profiles WHERE user_id=$user_id";
+    $result = mysqli_query($conn, $sql);
+    return $result;
+}

@@ -1,6 +1,8 @@
 <?php
 require "../db.php";
 
+
+
 if (isset($_POST["submit"])) {
     $username = htmlspecialchars($_POST["username"]);
     $password = htmlspecialchars($_POST["password"]);

@@ -4,6 +4,9 @@ require "./auth.php"; // ini yang jadi midleware
 
 $result_data = view_data_user();
 $num = 1;
+$login_id = $_SESSION["user_id"];
+
+$result = get_user_data($login_id)->fetch_assoc();
 
 if (isset($_GET["delete"])) {
   $id = $_GET["id"];
@@ -33,7 +36,8 @@ if (isset($_GET["logout"])) {
         <p class="alert alert-success text-center" style="width: 800px"><?= $_GET["message"] ?></p>
     <?php endif ?>
     <div class="card p-2 shadow-sm" style="width: 800px">
-      <h1 class="text-center" style="font-size: 30px;">List User</h1>
+      <h1 class="text-center" style="font-size: 30px;">Hello <?= $result["username"] ?></h1>
+      <a href="./pages/profile.php">Profile</a>
       <a class="btn btn-success w-25 mb-2" href="./pages/register.php">Sign Up</a>
       <a class="btn btn-danger w-25 mb-2" href="./index.php?logout=1">Logout</a>
       <table class="table table-info table-striped-columns">
