@@ -4,7 +4,16 @@ require "../db.php";
 if (isset($_POST["submit"])) {
     $username = htmlspecialchars($_POST["username"]);
     $password = htmlspecialchars($_POST["password"]);
-    add_data_user($username, $password);
+    $result = add_data_user($username, $password);
+
+    if ($result) {
+        session_start();
+        $user = get_user_by_username($username)->fetch_assoc();
+        $_SESSION["user_id"] = $user["id"];
+        header("Location: ./profile_form_page.php");
+
+    }
+
 }
 
 $conn->close();

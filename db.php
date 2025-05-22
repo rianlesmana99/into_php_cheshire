@@ -23,10 +23,7 @@ function add_data_user($username, $password) {
     $encrypt = password_hash($password, PASSWORD_BCRYPT);
     $sql = "INSERT INTO users (username, password) VALUES ('$username', '$encrypt')";
     $result = mysqli_query($conn, $sql);
-
-    if ($result) {
-        header("Location: ../index.php?message=Berhasil+menambahkan+data");
-    }
+    return $result;
 }
 
 function delete_data_user($id) {
@@ -59,6 +56,21 @@ function edit_data_user($id, $username, $password) {
 function get_user_by_username($username) {
     global $conn;
     $sql = "SELECT * FROM users WHERE username='$username'";
+    $result = mysqli_query($conn, $sql);
+    return $result;
+}
+
+function add_profile_data($full_name, $email, $user_id) {
+    global $conn;
+    $sql = "INSERT INTO profiles (full_name, email, user_id) VALUES ('$full_name', '$email', '$user_id')";
+    $result = mysqli_query($conn, $sql);
+    return $result;
+}
+
+function forgot_password($username, $new_password) {
+    global $conn;
+    $encrypt = password_hash($new_password, PASSWORD_BCRYPT);
+    $sql = "UPDATE users SET password='$encrypt' WHERE username='$username'";
     $result = mysqli_query($conn, $sql);
     return $result;
 }

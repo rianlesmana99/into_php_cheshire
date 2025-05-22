@@ -44,6 +44,7 @@ $conn->close();
         </div>
         <button class="btn btn-success mt-2" type="submit" name="submit">Login</button>
         <a href="../index.php" class="btn btn-warning mt-2 text-white">Home</a>
+        <a class="btn btn-light mt-2" href="./forgot.php">Lupa Password</a>
     </form>
 </body>
 </html>
