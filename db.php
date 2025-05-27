@@ -81,3 +81,17 @@ function get_profile_data($user_id) {
     $result = mysqli_query($conn, $sql);
     return $result;
 }
+
+function get_article() {
+    global $conn;
+    $sql = "SELECT username, full_name, title, content FROM users INNER JOIN profiles ON users.id=profiles.user_id INNER JOIN articles ON users.id=articles.user_id";
+    $result = mysqli_query($conn, $sql);
+    return $result;
+}
+
+function add_article($title, $content, $user_id) {
+    global $conn;
+    $sql = "INSERT INTO articles (title, content, user_id) VALUES ('$title', '$content', '$user_id')";
+    $result = mysqli_query($conn, $sql);
+    return $result;
+}

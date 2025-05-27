@@ -38,6 +38,7 @@ if (isset($_GET["logout"])) {
     <div class="card p-2 shadow-sm" style="width: 800px">
       <h1 class="text-center" style="font-size: 30px;">Hello <?= $result["username"] ?></h1>
       <a href="./pages/profile.php">Profile</a>
+      <a href="./pages/news.php">News</a>
       <a class="btn btn-success w-25 mb-2" href="./pages/register.php">Sign Up</a>
       <a class="btn btn-danger w-25 mb-2" href="./index.php?logout=1">Logout</a>
       <table class="table table-info table-striped-columns">
